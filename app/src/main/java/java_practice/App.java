@@ -4,7 +4,7 @@ package java_practice;
 public class App {
 
     public String getGreeting() {
-        return "Hello World!";
+        return "\nHello World!\n";
     }
 
     public static void main(String[] args) {
@@ -14,11 +14,14 @@ public class App {
         Dog myDog = new Dog("Buddy", 3);
         SwitchStatements switchStatements = new SwitchStatements();
 
+        While whileLoop = new While();
+
         System.out.println(new App().getGreeting());
 
         controlFlow.ifElseMethod();
         myDog.bark();
         forLoops.printNumbers();
+        whileLoop.whileLoop();
         
         System.out.println(switchStatements.dayName);
     }

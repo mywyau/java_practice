@@ -13,7 +13,9 @@ public class Dog {
 
     // Method
     void bark() {
-        System.out.println(name + " says woof!");
+        String message = String.format("\n%s says woof!.\n", name);
+        //System.out.println(name + " says woof!");
+        System.out.println(message);
     }
 }
 

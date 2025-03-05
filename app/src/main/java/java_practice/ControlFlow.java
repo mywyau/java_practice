@@ -4,7 +4,7 @@ public class ControlFlow {
 
     int x = 10;
 
-    public void ifElseMethod() {
+public void ifElseMethod() {
         if (x > 5) {
             System.out.println("x is greater than 5");
         } else {
