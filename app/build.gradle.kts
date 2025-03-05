@@ -48,6 +48,18 @@ application {
     // mainClass = "my_springboot.App"  // uncomment and run for other app
 }
 
+tasks.register("runJavaPracticeApp", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.App"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
+tasks.register("runSpringBoot", JavaExec::class) {
+    group = "application"
+    mainClass = "springboot.App"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
