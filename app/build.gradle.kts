@@ -44,8 +44,8 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "java_practice.App"
-    // mainClass = "my_springboot.App"  // uncomment and run for other app
+    // mainClass = "java_practice.App"
+    mainClass = "my_springboot.App"  // uncomment and run for other app
 }
 
 tasks.named<Test>("test") {
