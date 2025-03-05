@@ -9,4 +9,4 @@ echo "Building the application..."
 
 # Run the application
 echo "Starting the application..."
-./gradlew bootRun
+./gradlew bootRun -PmainClass=springboot.App
