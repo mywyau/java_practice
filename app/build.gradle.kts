@@ -60,6 +60,12 @@ tasks.register("runSpringBoot", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("arrayListsExamples", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.collections.ArrayListsExamples"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
