@@ -10,7 +10,6 @@ public class App {
     public static void main(String[] args) {
 
         ControlFlow controlFlow = new ControlFlow();
-        ForLoops forLoops = new ForLoops();        
         Dog myDog = new Dog("Buddy", 3);
         SwitchStatements switchStatements = new SwitchStatements();
 
@@ -20,7 +19,6 @@ public class App {
 
         controlFlow.ifElseMethod();
         myDog.bark();
-        forLoops.printNumbers();
         whileLoop.whileLoop();
         
         System.out.println(switchStatements.dayName);

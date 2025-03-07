@@ -66,6 +66,12 @@ tasks.register("arrayListsExamples", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("forLoopExamples", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.ForLoops"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
