@@ -1,5 +1,5 @@
 
-package java_practice;
+package java_practice.basics;
 
 public class App {
 

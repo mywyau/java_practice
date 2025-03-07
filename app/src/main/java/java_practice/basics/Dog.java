@@ -1,4 +1,4 @@
-package java_practice;
+package java_practice.basics;
 
 public class Dog {
     // Fields
@@ -14,7 +14,7 @@ public class Dog {
     // Method
     void bark() {
         String message = String.format("\n%s says woof!.\n", name);
-        //System.out.println(name + " says woof!");
+        // System.out.println(name + " says woof!");
         System.out.println(message);
     }
 }

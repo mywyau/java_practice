@@ -50,7 +50,7 @@ application {
 
 tasks.register("runJavaPracticeApp", JavaExec::class) {
     group = "application"
-    mainClass = "java_practice.App"
+    mainClass = "java_practice.basics.App"
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
