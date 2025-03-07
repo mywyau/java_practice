@@ -1,5 +1,19 @@
 # java_practice
 
+
+## to run specific apps/classes, use custom runner script:
+
+Please look inside build.gradle.kts for task names to run
+
+```
+./run_custom_tag.sh <task name>
+```
+
+```
+./run_custom_tag.sh forLoopExamples
+```
+
+
 ## Java and Spring Boot Learning Roadmap
 
 This document outlines the key topics and concepts you need to learn to become proficient in **Java** and **Spring Boot**. Use this as a checklist and reference guide as you progress through your learning journey.
