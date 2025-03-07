@@ -72,6 +72,12 @@ tasks.register("forLoopExamples", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("genericClasses", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.generics.GenericClasses"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
