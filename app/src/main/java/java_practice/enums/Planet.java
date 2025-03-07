@@ -22,6 +22,14 @@ public enum Planet {
         return G * mass / (radius * radius);
     }
 
+    public double getMass() {
+        return mass;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
     @Override
     public String toString() {
         return name() + " [Mass: " + mass + ", Radius: " + radius + "]";
