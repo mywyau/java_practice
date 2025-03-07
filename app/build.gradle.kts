@@ -84,6 +84,12 @@ tasks.register("genericMethods", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("errorHandling", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.error_handling.ErrorHandling"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
