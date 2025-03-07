@@ -90,6 +90,12 @@ tasks.register("errorHandling", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("enumExample1", JavaExec::class) {
+    group = "application"
+    mainClass = "java_practice.enums.EnumExample1"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
