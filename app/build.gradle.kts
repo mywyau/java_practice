@@ -96,6 +96,35 @@ tasks.register("enumExample1", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+
+tasks.register<JavaExec>("runMain") {
+    group = "application"
+    description = "Run a main class by short name like: ./gradlew runMain -PmainClass=SetExample"
+
+    doFirst {
+        val shortName = project.findProperty("mainClass") as? String
+            ?: throw GradleException("❌ Usage: ./gradlew runMain -PmainClass=SetExample")
+
+        // You can manually map short names to FQCNs if needed
+        val manualOverrides = mapOf(
+            "SetExample" to "java_practice.collections.SetExample",
+            "GenericMethods" to "java_practice.generics.GenericMethods",
+            "App" to "java_practice.App"
+        )
+
+        val fqcn = manualOverrides[shortName]
+            ?: "java_practice.${shortName.replaceFirstChar { it.lowercase() }}.${shortName}"
+
+        println("▶ Running class: $fqcn")
+
+        mainClass.set(fqcn)
+        classpath = sourceSets["main"].runtimeClasspath
+    }
+}
+
+
+
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
