@@ -25,11 +25,18 @@ gradle wrapper
 Please look inside build.gradle.kts for task names to run
 
 ```
-./run_custom_tag.sh <task name>
+./run.sh.sh <task name>
 ```
 
 ```
-./run_custom_tag.sh forLoopExamples
+./run.sh.sh forLoopExamples
 ```
 
+###  No pre-defined tasks
+
+If not pre defined task set for file then you will need to update the manual overrides (manualOverrides) in tasks.register<JavaExec>("runMain") then run e.g:
+
+```
+./run.sh runMain SetExample
+```
 

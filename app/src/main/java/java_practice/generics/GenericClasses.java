@@ -21,9 +21,13 @@ public class GenericClasses {
 
     public static void main(String[] args) {
         Box<String> stringBox = new Box<>();
+        Box<Integer> numberBox = new Box<>();
         stringBox.setItem("Sword");
-        String value = stringBox.getItem();
-        System.out.println("Inside my box there is a: " + value);
+        numberBox.setItem(100);
+        String swordValue = stringBox.getItem();
+        Integer numberValue = numberBox.getItem();
+        System.out.println("Inside my string box there is a: " + swordValue);
+        System.out.println("Inside my number box there is a: " + numberValue);
     }
 
 }
