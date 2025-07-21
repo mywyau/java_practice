@@ -68,7 +68,7 @@ tasks.register("arrayListsExamples", JavaExec::class) {
 
 tasks.register("forLoopExamples", JavaExec::class) {
     group = "application"
-    mainClass = "java_practice.ForLoops"
+    mainClass = "java_practice.basics.ForLoops"
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
