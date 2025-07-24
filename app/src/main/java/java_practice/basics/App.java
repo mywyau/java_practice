@@ -20,7 +20,7 @@ public class App {
         controlFlow.ifElseMethod();
         myDog.bark();
         whileLoop.whileLoop();
-        
-        System.out.println(switchStatements.dayName);
+
+        switchStatements.basicExpressionSwitch();
     }
 }

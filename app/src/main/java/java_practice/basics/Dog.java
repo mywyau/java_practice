@@ -1,6 +1,7 @@
 package java_practice.basics;
 
 public class Dog {
+    
     // Fields
     String name;
     int age;
@@ -14,7 +15,6 @@ public class Dog {
     // Method
     void bark() {
         String message = String.format("\n%s says woof!.\n", name);
-        // System.out.println(name + " says woof!");
         System.out.println(message);
     }
 }

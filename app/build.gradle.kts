@@ -96,6 +96,12 @@ tasks.register("enumExample1", JavaExec::class) {
     classpath = sourceSets.main.get().runtimeClasspath
 }
 
+tasks.register("binaryTreeLevelOrder", JavaExec::class) {
+    group = "application"
+    mainClass = "dsa.BinaryTreeLevelOrder"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
+
 
 tasks.register<JavaExec>("runMain") {
     group = "application"
@@ -107,6 +113,7 @@ tasks.register<JavaExec>("runMain") {
 
         // You can manually map short names to FQCNs if needed
         val manualOverrides = mapOf(
+            "BinaryTreeLevelOrder" to "dsa.BinaryTreeLevelOrder",
             "SetExample" to "java_practice.collections.SetExample",
             "GenericMethods" to "java_practice.generics.GenericMethods",
             "App" to "java_practice.App"
@@ -122,6 +129,30 @@ tasks.register<JavaExec>("runMain") {
     }
 }
 
+
+tasks.register<JavaExec>("runMainDsa") {
+    group = "application"
+    description = "Run a main class by short name like: ./gradlew runMainDsa -PmainClass=BinaryTreeLevelOrder"
+
+    doFirst {
+        val shortName = project.findProperty("mainClass") as? String
+            ?: throw GradleException("❌ Usage: ./gradlew runMainDsa -PmainClass=BinaryTreeLevelOrder")
+
+        // You can manually map short names to FQCNs if needed
+        val manualOverrides = mapOf(
+            "BinaryTreeLevelOrder" to "dsa.BinaryTreeLevelOrder",
+            "App" to "dsa.App"
+        )
+
+        val fqcn = manualOverrides[shortName]
+            ?: "dsa.${shortName.replaceFirstChar { it.lowercase() }}.${shortName}"
+
+        println("▶ Running class: $fqcn")
+
+        mainClass.set(fqcn)
+        classpath = sourceSets["main"].runtimeClasspath
+    }
+}
 
 
 
