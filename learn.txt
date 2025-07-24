@@ -33,3 +33,83 @@
    - Communicating between microservices (REST, Kafka)
    - Deploying Spring Boot apps (Docker, Kubernetes, AWS)
 
+
+
+Arrays & Hashing
+Problem #	Title	Key Techniques
+1	Two Sum	HashMap, one‑pass scan
+11	Container With Most Water	Two pointers
+15	3Sum	Sorting + two pointers
+238	Product of Array Except Self	Prefix/suffix products
+349	Intersection of Two Arrays	HashSet
+
+Strings
+Problem #	Title	Key Techniques
+3	Longest Substring Without Repeating Characters	Sliding window
+5	Longest Palindromic Substring	Expand around center / DP
+76	Minimum Window Substring	Two pointers + hashmap
+125	Valid Palindrome	Two pointers
+438	Find All Anagrams in a String	Sliding window + frequency
+
+Linked Lists
+Problem #	Title	Key Techniques
+2	Add Two Numbers	Dummy head, carry propagation
+19	Remove Nth Node From End of List	Two‑pointer gap
+21	Merge Two Sorted Lists	Iteration with dummy head
+141	Linked List Cycle	Floyd’s tortoise & hare
+142	Linked List Cycle II	Cycle detection + entry point
+
+Stacks & Queues
+Problem #	Title	Key Techniques
+20	Valid Parentheses	Stack
+150	Evaluate Reverse Polish Notation	Stack
+155	Min Stack	Stack with auxiliary min
+232	Implement Queue using Stacks	Amortized two‑stack
+239	Sliding Window Maximum	Deque
+
+Trees & Graphs
+Problem #	Title	Key Techniques
+94	Binary Tree Inorder Traversal	Recursion / stack
+102	Binary Tree Level Order Traversal	BFS + queue
+200	Number of Islands	DFS/BFS on grid
+236	Lowest Common Ancestor of BST	Tree recursion
+207	Course Schedule	Topological sort on graph
+
+Dynamic Programming
+Problem #	Title	Key Techniques
+70	Climbing Stairs	1D DP
+139	Word Break	Top‑down or bottom‑up DP
+300	Longest Increasing Subsequence	Patience sorting / DP
+322	Coin Change	1D DP
+416	Partition Equal Subset Sum	2D DP / bitset optimization
+
+Backtracking
+Problem #	Title	Key Techniques
+22	Generate Parentheses	Recursion + pruning
+39	Combination Sum	DFS + backtracking
+46	Permutations	Swap‑based recursion
+47	Permutations II	Handling duplicates
+79	Word Search	DFS + visited tracking
+
+Heaps & Sorting
+Problem #	Title	Key Techniques
+23	Merge k Sorted Lists	Min‑heap
+56	Merge Intervals	Sorting + scan
+74	Find Peak Element	Binary search
+215	Kth Largest Element in an Array	Quickselect / heap
+347	Top K Frequent Elements	Heap / bucket sort
+
+Greedy
+Problem #	Title	Key Techniques
+55	Jump Game	Greedy
+122	Best Time to Buy and Sell Stock II	One‑pass greedy
+435	Non-overlapping Intervals	Sort by end time
+452	Minimum Number of Arrows to Burst Balloons	Sort + greedy
+763	Partition Labels	Greedy with intervals
+
+Bit Manipulation
+Problem #	Title	Key Techniques
+136	Single Number	XOR
+190	Reverse Bits	Bit shifts
+191	Number of 1 Bits	Kernighan’s algorithm
+338	Counting Bits	DP on bits

@@ -124,7 +124,7 @@ public class SwitchStatements {
     }
 
     public static void main(String[] args) {
-        
+
         SwitchStatements ss = new SwitchStatements();
 
         ss.basicExpressionSwitch();
