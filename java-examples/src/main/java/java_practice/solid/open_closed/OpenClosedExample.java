@@ -8,6 +8,8 @@ import java.util.List;
  * DiscountCalculator does not need another if/switch branch when a discount is
  * added. New behaviour is introduced by implementing DiscountPolicy.
  */
+
+
 public class OpenClosedExample {
 
     interface DiscountPolicy {
