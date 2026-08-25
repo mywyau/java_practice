@@ -20,6 +20,13 @@ public class ForLoops {
         }
     }
 
+    public void enhancedForLoop() {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+    }
+
     // 3. Nested loop
     public void nestedForLoop() {
         for (int i = 0; i < 3; i++) {
@@ -45,6 +52,12 @@ public class ForLoops {
         }
     }
 
+    public void loopWithStep2() {
+        for (int i = 0; i <= 10; i += 2) {
+            System.out.println("Even index " + i);
+        }
+    }
+
     // 6. Two-pointer loop
     public void twoPointerLoop() {
         int[] arr = { 1, 2, 3, 4, 5, 6 };
@@ -52,6 +65,28 @@ public class ForLoops {
 
         while (left < right) {
             System.out.println(arr[left] + " + " + arr[right]);
+            left++;
+            right--;
+        }
+    }
+
+    public void twoPointerLoop2() {
+        int[] arr = { 1, 2, 3, 4, 5, 6 };
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            System.out.println(arr[left] + "+" + arr[right]);
+            left++;
+            right--;
+        }
+    }
+
+    public void pointers2() {
+
+        int[] arr = { 1, 2, 3, 4, 5, 6 };
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
             left++;
             right--;
         }

@@ -1,7 +1,7 @@
 package java_practice.basics;
 
 public class Dog {
-    
+
     // Fields
     String name;
     int age;
@@ -18,5 +18,4 @@ public class Dog {
         System.out.println(message);
     }
 }
-
 // Usage
