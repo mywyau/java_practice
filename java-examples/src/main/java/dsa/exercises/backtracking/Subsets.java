@@ -9,9 +9,25 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class Subsets implements DsaExercise {
-    // Every value creates two branches: exclude it or include it, then undo the choice.
-    public static java.util.List<java.util.List<Integer>> subsets(int[] numbers) { java.util.List<java.util.List<Integer>> result = new java.util.ArrayList<>(); build(numbers, 0, new java.util.ArrayList<>(), result); return result; }
-    private static void build(int[] numbers, int index, java.util.List<Integer> current, java.util.List<java.util.List<Integer>> result) { if (index == numbers.length) { result.add(new java.util.ArrayList<>(current)); return; } build(numbers, index + 1, current, result); current.add(numbers[index]); build(numbers, index + 1, current, result); current.removeLast(); }
+    // Every value creates two branches: exclude it or include it, then undo the
+    // choice.
+    public static java.util.List<java.util.List<Integer>> subsets(int[] numbers) {
+        java.util.List<java.util.List<Integer>> result = new java.util.ArrayList<>();
+        build(numbers, 0, new java.util.ArrayList<>(), result);
+        return result;
+    }
+
+    private static void build(int[] numbers, int index, java.util.List<Integer> current,
+            java.util.List<java.util.List<Integer>> result) {
+        if (index == numbers.length) {
+            result.add(new java.util.ArrayList<>(current));
+            return;
+        }
+        build(numbers, index + 1, current, result);
+        current.add(numbers[index]);
+        build(numbers, index + 1, current, result);
+        current.removeLast();
+    }
 
     @Override
     public String problem() {
