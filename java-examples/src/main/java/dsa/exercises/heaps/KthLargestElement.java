@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class KthLargestElement implements DsaExercise {
+    // Keep only the largest k values; the min-heap root is then the kth largest.
+    public static int findKthLargest(int[] numbers, int k) { if (k <= 0 || k > numbers.length) throw new IllegalArgumentException("invalid k"); java.util.PriorityQueue<Integer> heap = new java.util.PriorityQueue<>(); for (int number : numbers) { heap.add(number); if (heap.size() > k) heap.remove(); } return heap.element(); }
+
     @Override
     public String problem() {
         return "Find the kth largest value in an unsorted array.";
@@ -28,4 +31,3 @@ public class KthLargestElement implements DsaExercise {
         new KthLargestElement().printGuide();
     }
 }
-

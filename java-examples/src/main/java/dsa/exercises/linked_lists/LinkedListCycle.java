@@ -9,6 +9,10 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class LinkedListCycle implements DsaExercise {
+    // Inside a cycle, the fast pointer gains one node per step until the pointers meet.
+    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } }
+    public static boolean hasCycle(ListNode head) { ListNode slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; if (slow == fast) return true; } return false; }
+
     @Override
     public String problem() {
         return "Determine whether a linked list contains a cycle.";
@@ -28,4 +32,3 @@ public class LinkedListCycle implements DsaExercise {
         new LinkedListCycle().printGuide();
     }
 }
-

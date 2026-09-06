@@ -9,6 +9,14 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class FindMinimumInRotatedSortedArray implements DsaExercise {
+    // Comparing with the right edge reveals which side contains the rotation point.
+    public static int findMin(int[] numbers) {
+        if (numbers.length == 0) throw new IllegalArgumentException("numbers must not be empty");
+        int left = 0, right = numbers.length - 1;
+        while (left < right) { int middle = left + (right - left) / 2; if (numbers[middle] > numbers[right]) left = middle + 1; else right = middle; }
+        return numbers[left];
+    }
+
     @Override
     public String problem() {
         return "Find the minimum value in a rotated sorted array.";
@@ -28,4 +36,3 @@ public class FindMinimumInRotatedSortedArray implements DsaExercise {
         new FindMinimumInRotatedSortedArray().printGuide();
     }
 }
-

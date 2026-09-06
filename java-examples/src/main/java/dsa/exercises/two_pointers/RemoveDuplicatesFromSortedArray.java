@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class RemoveDuplicatesFromSortedArray implements DsaExercise {
+    // The prefix before write always contains the unique values seen so far.
+    public static int removeDuplicates(int[] numbers) { if (numbers.length == 0) return 0; int write = 1; for (int read = 1; read < numbers.length; read++) if (numbers[read] != numbers[write - 1]) numbers[write++] = numbers[read]; return write; }
+
     @Override
     public String problem() {
         return "Remove duplicates in place and return the new length.";
@@ -28,4 +31,3 @@ public class RemoveDuplicatesFromSortedArray implements DsaExercise {
         new RemoveDuplicatesFromSortedArray().printGuide();
     }
 }
-

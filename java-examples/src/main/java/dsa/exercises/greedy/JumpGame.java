@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class JumpGame implements DsaExercise {
+    // farthest summarizes every route reachable from the processed prefix.
+    public static boolean canJump(int[] numbers) { int farthest = 0; for (int i = 0; i < numbers.length; i++) { if (i > farthest) return false; farthest = Math.max(farthest, i + numbers[i]); } return true; }
+
     @Override
     public String problem() {
         return "Decide whether the final array index is reachable.";
@@ -28,4 +31,3 @@ public class JumpGame implements DsaExercise {
         new JumpGame().printGuide();
     }
 }
-

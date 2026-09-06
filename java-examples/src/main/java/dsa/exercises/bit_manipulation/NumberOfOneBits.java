@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class NumberOfOneBits implements DsaExercise {
+    // n & (n - 1) clears exactly the lowest set bit on each iteration.
+    public static int hammingWeight(int number) { int count = 0; while (number != 0) { number &= number - 1; count++; } return count; }
+
     @Override
     public String problem() {
         return "Count set bits in an integer.";
@@ -28,4 +31,3 @@ public class NumberOfOneBits implements DsaExercise {
         new NumberOfOneBits().printGuide();
     }
 }
-

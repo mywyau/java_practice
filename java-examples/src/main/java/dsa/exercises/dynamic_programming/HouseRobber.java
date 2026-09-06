@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class HouseRobber implements DsaExercise {
+    // Choose between skipping this house or adding it to the best total two houses back.
+    public static int rob(int[] houses) { int twoBack = 0, oneBack = 0; for (int money : houses) { int best = Math.max(oneBack, twoBack + money); twoBack = oneBack; oneBack = best; } return oneBack; }
+
     @Override
     public String problem() {
         return "Maximize non-adjacent values selected from a row.";
@@ -28,4 +31,3 @@ public class HouseRobber implements DsaExercise {
         new HouseRobber().printGuide();
     }
 }
-

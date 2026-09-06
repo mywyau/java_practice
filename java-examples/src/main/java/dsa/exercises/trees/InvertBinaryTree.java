@@ -9,6 +9,10 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class InvertBinaryTree implements DsaExercise {
+    // Each call returns the root of a fully inverted subtree to its parent.
+    public static class TreeNode { public int value; public TreeNode left, right; public TreeNode(int value) { this.value = value; } }
+    public static TreeNode invertTree(TreeNode root) { if (root == null) return null; TreeNode originalLeft = root.left; root.left = invertTree(root.right); root.right = invertTree(originalLeft); return root; }
+
     @Override
     public String problem() {
         return "Swap every node's left and right subtrees.";
@@ -28,4 +32,3 @@ public class InvertBinaryTree implements DsaExercise {
         new InvertBinaryTree().printGuide();
     }
 }
-

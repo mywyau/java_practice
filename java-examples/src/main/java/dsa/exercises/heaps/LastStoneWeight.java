@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class LastStoneWeight implements DsaExercise {
+    // A max-heap exposes the two heaviest remaining stones at every step.
+    public static int lastStoneWeight(int[] stones) { java.util.PriorityQueue<Integer> heap = new java.util.PriorityQueue<>(java.util.Comparator.reverseOrder()); for (int stone : stones) heap.add(stone); while (heap.size() > 1) { int first = heap.remove(), second = heap.remove(); if (first != second) heap.add(first - second); } return heap.isEmpty() ? 0 : heap.remove(); }
+
     @Override
     public String problem() {
         return "Repeatedly smash the two heaviest stones.";
@@ -28,4 +31,3 @@ public class LastStoneWeight implements DsaExercise {
         new LastStoneWeight().printGuide();
     }
 }
-

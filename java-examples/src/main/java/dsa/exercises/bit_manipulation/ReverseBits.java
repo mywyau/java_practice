@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ReverseBits implements DsaExercise {
+    // Copy one low input bit at a time; unsigned shift fills from the left with zeroes.
+    public static int reverseBits(int number) { int result = 0; for (int i = 0; i < Integer.SIZE; i++) { result = (result << 1) | (number & 1); number >>>= 1; } return result; }
+
     @Override
     public String problem() {
         return "Reverse all 32 bits of an integer.";
@@ -28,4 +31,3 @@ public class ReverseBits implements DsaExercise {
         new ReverseBits().printGuide();
     }
 }
-

@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ClimbingStairs implements DsaExercise {
+    // Each step can be reached from exactly the previous one or previous two steps.
+    public static int climbStairs(int n) { if (n < 0) throw new IllegalArgumentException("n must be non-negative"); int previous = 1, current = 1; for (int step = 2; step <= n; step++) { int next = previous + current; previous = current; current = next; } return current; }
+
     @Override
     public String problem() {
         return "Count ways to climb n steps using jumps of one or two.";
@@ -28,4 +31,3 @@ public class ClimbingStairs implements DsaExercise {
         new ClimbingStairs().printGuide();
     }
 }
-

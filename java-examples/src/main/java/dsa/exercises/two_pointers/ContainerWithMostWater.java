@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ContainerWithMostWater implements DsaExercise {
+    // Width always shrinks, so only moving the shorter wall might improve the area.
+    public static int maxArea(int[] heights) { int left = 0, right = heights.length - 1, best = 0; while (left < right) { best = Math.max(best, Math.min(heights[left], heights[right]) * (right - left)); if (heights[left] < heights[right]) left++; else right--; } return best; }
+
     @Override
     public String problem() {
         return "Find two lines that hold the most water.";
@@ -28,4 +31,3 @@ public class ContainerWithMostWater implements DsaExercise {
         new ContainerWithMostWater().printGuide();
     }
 }
-

@@ -9,6 +9,22 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class BestTimeToBuyAndSellStock implements DsaExercise {
+    /**
+     * Finds the best profit when buying before selling. A falling market returns zero.
+     * The cheapest earlier price is all we need in order to price today's sale.
+     */
+    public static int maxProfit(int[] prices) {
+        int lowestPrice = Integer.MAX_VALUE;
+        int bestProfit = 0;
+
+        for (int price : prices) {
+            lowestPrice = Math.min(lowestPrice, price);
+            bestProfit = Math.max(bestProfit, price - lowestPrice);
+        }
+
+        return bestProfit;
+    }
+
     @Override
     public String problem() {
         return "Find the maximum profit from one buy followed by one sale.";
@@ -25,7 +41,8 @@ public class BestTimeToBuyAndSellStock implements DsaExercise {
     }
 
     public static void main(String[] args) {
-        new BestTimeToBuyAndSellStock().printGuide();
+        BestTimeToBuyAndSellStock exercise = new BestTimeToBuyAndSellStock();
+        exercise.printGuide();
+        System.out.println("Example: " + maxProfit(new int[] {7, 1, 5, 3, 6, 4}));
     }
 }
-

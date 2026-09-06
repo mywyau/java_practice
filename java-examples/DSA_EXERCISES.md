@@ -1,12 +1,19 @@
 # 75 DSA Practice Questions
-+
-+The questions are ordered roughly from foundational patterns to more advanced topics. Each class compiles and prints a prompt, hint, and complexity target. Add your solution method and tests directly to the class.
-+
-+Run one with:
-+
-+```bash
-+./gradlew :java-examples:runExample -PmainClass=dsa.exercises.arrays.TwoSum
-+```
+The questions are ordered roughly from foundational patterns to more advanced topics. Each class compiles and prints a prompt, hint, and complexity target.
+
+Every problem class now contains a callable reference implementation. The Arrays
+section additionally includes runnable examples and focused edge-case tests. A
+useful learning loop is to attempt each problem first, compare your approach with
+the reference, and then change or add a test to check your understanding.
+
+See [`DSA_TECHNIQUES.md`](DSA_TECHNIQUES.md) for concise notes explaining the
+reusable patterns, invariants, and common pitfalls behind the implementations.
+
+Run one with:
+
+```bash
+./gradlew :java-examples:runExample -PmainClass=dsa.exercises.arrays.TwoSum
+```
 
 ## Arrays
 

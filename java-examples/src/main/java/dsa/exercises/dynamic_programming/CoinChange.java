@@ -9,6 +9,13 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class CoinChange implements DsaExercise {
+    // best[value] is built from already-solved best[value - coin] states.
+    public static int coinChange(int[] coins, int amount) {
+        int[] best = new int[amount + 1]; java.util.Arrays.fill(best, amount + 1); best[0] = 0;
+        for (int value = 1; value <= amount; value++) for (int coin : coins) if (coin > 0 && coin <= value) best[value] = Math.min(best[value], best[value - coin] + 1);
+        return best[amount] > amount ? -1 : best[amount];
+    }
+
     @Override
     public String problem() {
         return "Find the fewest coins needed to make an amount.";
@@ -28,4 +35,3 @@ public class CoinChange implements DsaExercise {
         new CoinChange().printGuide();
     }
 }
-

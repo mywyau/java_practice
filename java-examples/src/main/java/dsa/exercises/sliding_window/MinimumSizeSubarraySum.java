@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MinimumSizeSubarraySum implements DsaExercise {
+    // Positive values make the sum monotonic as either boundary moves.
+    public static int minSubArrayLen(int target, int[] numbers) { int left = 0, sum = 0, best = Integer.MAX_VALUE; for (int right = 0; right < numbers.length; right++) { sum += numbers[right]; while (sum >= target) { best = Math.min(best, right - left + 1); sum -= numbers[left++]; } } return best == Integer.MAX_VALUE ? 0 : best; }
+
     @Override
     public String problem() {
         return "Find the shortest positive-number window meeting a target sum.";
@@ -28,4 +31,3 @@ public class MinimumSizeSubarraySum implements DsaExercise {
         new MinimumSizeSubarraySum().printGuide();
     }
 }
-

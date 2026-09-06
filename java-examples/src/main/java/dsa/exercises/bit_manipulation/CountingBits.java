@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class CountingBits implements DsaExercise {
+    // Shifting drops the low bit, whose value is then added back with i & 1.
+    public static int[] countBits(int n) { int[] counts = new int[n + 1]; for (int i = 1; i <= n; i++) counts[i] = counts[i >> 1] + (i & 1); return counts; }
+
     @Override
     public String problem() {
         return "Return set-bit counts for every number from 0 through n.";
@@ -28,4 +31,3 @@ public class CountingBits implements DsaExercise {
         new CountingBits().printGuide();
     }
 }
-

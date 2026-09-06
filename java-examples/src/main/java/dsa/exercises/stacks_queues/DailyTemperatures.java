@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class DailyTemperatures implements DsaExercise {
+    // The stack holds unresolved days in decreasing temperature order.
+    public static int[] dailyTemperatures(int[] temperatures) { int[] waits = new int[temperatures.length]; java.util.Deque<Integer> stack = new java.util.ArrayDeque<>(); for (int day = 0; day < temperatures.length; day++) { while (!stack.isEmpty() && temperatures[day] > temperatures[stack.peek()]) { int previous = stack.pop(); waits[previous] = day - previous; } stack.push(day); } return waits; }
+
     @Override
     public String problem() {
         return "For each day, find how long until a warmer temperature.";
@@ -28,4 +31,3 @@ public class DailyTemperatures implements DsaExercise {
         new DailyTemperatures().printGuide();
     }
 }
-

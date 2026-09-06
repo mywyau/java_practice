@@ -9,6 +9,19 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class HappyNumber implements DsaExercise {
+    // Floyd's slow/fast technique detects a repeated value without a visited set.
+    public static boolean isHappy(int number) {
+        int slow = number, fast = next(number);
+        while (fast != 1 && slow != fast) { slow = next(slow); fast = next(next(fast)); }
+        return fast == 1;
+    }
+
+    private static int next(int number) {
+        int sum = 0;
+        while (number != 0) { int digit = number % 10; sum += digit * digit; number /= 10; }
+        return sum;
+    }
+
     @Override
     public String problem() {
         return "Detect whether repeatedly summing squared digits reaches one.";
@@ -28,4 +41,3 @@ public class HappyNumber implements DsaExercise {
         new HappyNumber().printGuide();
     }
 }
-

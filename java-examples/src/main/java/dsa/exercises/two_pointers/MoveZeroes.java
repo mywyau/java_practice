@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MoveZeroes implements DsaExercise {
+    // First compact nonzero values in order, then clear the unused suffix.
+    public static void moveZeroes(int[] numbers) { int write = 0; for (int number : numbers) if (number != 0) numbers[write++] = number; while (write < numbers.length) numbers[write++] = 0; }
+
     @Override
     public String problem() {
         return "Move all zeroes to the end while preserving other values.";
@@ -28,4 +31,3 @@ public class MoveZeroes implements DsaExercise {
         new MoveZeroes().printGuide();
     }
 }
-

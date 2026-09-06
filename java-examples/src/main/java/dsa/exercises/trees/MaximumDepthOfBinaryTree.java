@@ -9,6 +9,10 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MaximumDepthOfBinaryTree implements DsaExercise {
+    // Define depth recursively as one plus the deeper child subtree.
+    public static class TreeNode { public int value; public TreeNode left, right; public TreeNode(int value) { this.value = value; } }
+    public static int maxDepth(TreeNode root) { return root == null ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right)); }
+
     @Override
     public String problem() {
         return "Find the number of nodes on the longest root-to-leaf path.";
@@ -28,4 +32,3 @@ public class MaximumDepthOfBinaryTree implements DsaExercise {
         new MaximumDepthOfBinaryTree().printGuide();
     }
 }
-

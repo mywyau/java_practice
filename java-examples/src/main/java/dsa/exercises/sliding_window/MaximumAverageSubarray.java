@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MaximumAverageSubarray implements DsaExercise {
+    // Update the fixed window by adding its entrant and removing its leaver.
+    public static double findMaxAverage(int[] numbers, int k) { if (k <= 0 || k > numbers.length) throw new IllegalArgumentException("invalid window size"); long sum = 0; for (int i = 0; i < k; i++) sum += numbers[i]; long best = sum; for (int i = k; i < numbers.length; i++) { sum += numbers[i] - numbers[i - k]; best = Math.max(best, sum); } return (double) best / k; }
+
     @Override
     public String problem() {
         return "Find the largest average among windows of size k.";
@@ -28,4 +31,3 @@ public class MaximumAverageSubarray implements DsaExercise {
         new MaximumAverageSubarray().printGuide();
     }
 }
-

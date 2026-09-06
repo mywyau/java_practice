@@ -9,6 +9,13 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ContainsDuplicate implements DsaExercise {
+    // Set.add returns false when the value was already present.
+    public static boolean containsDuplicate(int[] numbers) {
+        java.util.Set<Integer> seen = new java.util.HashSet<>();
+        for (int number : numbers) if (!seen.add(number)) return true;
+        return false;
+    }
+
     @Override
     public String problem() {
         return "Determine whether an array contains a repeated value.";
@@ -28,4 +35,3 @@ public class ContainsDuplicate implements DsaExercise {
         new ContainsDuplicate().printGuide();
     }
 }
-

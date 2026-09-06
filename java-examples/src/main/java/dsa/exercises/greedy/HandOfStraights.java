@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class HandOfStraights implements DsaExercise {
+    // The smallest remaining card is forced to begin the next consecutive group.
+    public static boolean isNStraightHand(int[] hand, int groupSize) { if (groupSize <= 0 || hand.length % groupSize != 0) return false; java.util.TreeMap<Integer, Integer> counts = new java.util.TreeMap<>(); for (int card : hand) counts.merge(card, 1, Integer::sum); while (!counts.isEmpty()) { int first = counts.firstKey(); for (int card = first; card < first + groupSize; card++) { Integer count = counts.get(card); if (count == null) return false; if (count == 1) counts.remove(card); else counts.put(card, count - 1); } } return true; }
+
     @Override
     public String problem() {
         return "Group cards into consecutive runs of fixed size.";
@@ -28,4 +31,3 @@ public class HandOfStraights implements DsaExercise {
         new HandOfStraights().printGuide();
     }
 }
-

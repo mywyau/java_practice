@@ -9,6 +9,9 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class NonOverlappingIntervals implements DsaExercise {
+    // Keeping the earliest finish leaves maximum room for future intervals.
+    public static int eraseOverlapIntervals(int[][] intervals) { if (intervals.length == 0) return 0; int[][] sorted = intervals.clone(); java.util.Arrays.sort(sorted, java.util.Comparator.comparingInt(value -> value[1])); int removed = 0, end = sorted[0][1]; for (int i = 1; i < sorted.length; i++) if (sorted[i][0] < end) removed++; else end = sorted[i][1]; return removed; }
+
     @Override
     public String problem() {
         return "Remove the fewest intervals to eliminate overlap.";
@@ -28,4 +31,3 @@ public class NonOverlappingIntervals implements DsaExercise {
         new NonOverlappingIntervals().printGuide();
     }
 }
-

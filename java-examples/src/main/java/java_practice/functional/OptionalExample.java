@@ -1,62 +1,46 @@
 package java_practice.functional;
 
+import java.util.List;
 import java.util.Optional;
 
+/**
+ * Optional represents a value that may or may not exist.
+ */
 public class OptionalExample {
 
-    Optional<String> emptyStringOpt = Optional.empty();
+    record User(int id, String name, String email) {
+    }
 
-    String name = "John";
-    Optional<String> johnOpt = Optional.of(name);
+    private static final List<User> USERS = List.of(
+            new User(1, "Ada", "ada@example.com"),
+            new User(2, "Grace", "grace@example.com"));
 
-    String nullableName = null;
-    Optional<String> nullableNameOpt = Optional.ofNullable(nullableName); // This will create an empty optional.
+    static Optional<User> findUserById(int id) {
+        return USERS.stream()
+                .filter(user -> user.id() == id)
+                .findFirst();
+    }
 
-    void optionalLogic() {
+    static String emailForUser(int id) {
+        return findUserById(id)
+                .map(User::email)
+                .orElse("No email found");
+    }
 
-        String name = "John";
-        Optional<String> johnOpt = Optional.of(name);
+    static Optional<String> normalisedNickname(String nickname) {
+        return Optional.ofNullable(nickname)
+                .map(String::trim)
+                .filter(value -> !value.isEmpty())
+                .map(String::toLowerCase);
+    }
 
-        if (johnOpt.isPresent()) {
-            System.out.println("Name is present");
-        } else {
-            System.out.println("Name is NOT present");
-        }
-        ;
+    public static void main(String[] args) {
+        findUserById(1)
+                .ifPresent(user -> System.out.println("Found: " + user.name()));
 
-        johnOpt.ifPresent(johnsName -> System.out.println("Hello, " + johnsName));
-    };
-
-    int returnAValueFromOptionalLogic() {
-
-        String name = "John";
-        Optional<String> johnOpt = Optional.of(name);
-
-        if (johnOpt.isPresent()) {
-            return 5;
-        } else {
-            return 10;
-        }
-    };
-
-    int returnAValueFromOptionalImproved() {
-
-        // more functional approach
-
-        String name = "John";
-        Optional<String> johnOpt = Optional.of(name);
-
-        return johnOpt.map(johnsName -> 5).orElse(10);
-    };
-
-
-    Optional<Integer> flatMapExmaple() {
-
-        String name = "John";
-        Optional<String> johnOpt = Optional.of(name);
-        Optional<Integer> newOpt = johnOpt.flatMap(s -> Optional.of(s.length()));
-
-        return newOpt;
-    };
-
+        System.out.println("User 1 email: " + emailForUser(1));
+        System.out.println("User 99 email: " + emailForUser(99));
+        System.out.println("Nickname: " + normalisedNickname("  Coder  ").orElse("anonymous"));
+        System.out.println("Missing nickname: " + normalisedNickname(null).orElse("anonymous"));
+    }
 }

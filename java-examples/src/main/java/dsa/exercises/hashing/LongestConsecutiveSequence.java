@@ -9,6 +9,18 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class LongestConsecutiveSequence implements DsaExercise {
+    // Grow only from sequence starts, otherwise the same run would be scanned repeatedly.
+    public static int longestConsecutive(int[] numbers) {
+        java.util.Set<Integer> values = new java.util.HashSet<>();
+        for (int number : numbers) values.add(number);
+        int best = 0;
+        for (int number : values) if (!values.contains(number - 1)) {
+            int length = 1; while (values.contains(number + length)) length++;
+            best = Math.max(best, length);
+        }
+        return best;
+    }
+
     @Override
     public String problem() {
         return "Find the longest run of consecutive integers in any order.";
@@ -28,4 +40,3 @@ public class LongestConsecutiveSequence implements DsaExercise {
         new LongestConsecutiveSequence().printGuide();
     }
 }
-

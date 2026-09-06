@@ -9,6 +9,15 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ImplementQueueUsingStacks implements DsaExercise {
+    // Transfer lazily so each value moves from input to output only once.
+    private final java.util.Deque<Integer> input = new java.util.ArrayDeque<>();
+    private final java.util.Deque<Integer> output = new java.util.ArrayDeque<>();
+    public void push(int value) { input.push(value); }
+    public int pop() { moveIfNeeded(); return output.pop(); }
+    public int peek() { moveIfNeeded(); return output.element(); }
+    public boolean empty() { return input.isEmpty() && output.isEmpty(); }
+    private void moveIfNeeded() { if (output.isEmpty()) while (!input.isEmpty()) output.push(input.pop()); }
+
     @Override
     public String problem() {
         return "Implement FIFO operations using two LIFO stacks.";
@@ -28,4 +37,3 @@ public class ImplementQueueUsingStacks implements DsaExercise {
         new ImplementQueueUsingStacks().printGuide();
     }
 }
-
