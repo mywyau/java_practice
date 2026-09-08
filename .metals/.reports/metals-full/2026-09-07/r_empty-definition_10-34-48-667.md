@@ -1,3 +1,14 @@
+error id: file://<WORKSPACE>/java-examples/src/main/java/dsa/exercises/sliding_window/MaximumAverageSubarray.java:java/lang/IllegalArgumentException#
+file://<WORKSPACE>/java-examples/src/main/java/dsa/exercises/sliding_window/MaximumAverageSubarray.java
+empty definition using pc, found symbol in pc: java/lang/IllegalArgumentException#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 565
+uri: file://<WORKSPACE>/java-examples/src/main/java/dsa/exercises/sliding_window/MaximumAverageSubarray.java
+text:
+```scala
 package dsa.exercises.sliding_window;
 
 import dsa.exercises.DsaExercise;
@@ -10,9 +21,12 @@ import dsa.exercises.DsaExercise;
  */
 public class MaximumAverageSubarray implements DsaExercise {
     // Update the fixed window by adding its entrant and removing its leaver.
-    public static double findMaxAverage(int[] numbers, int k) {
+    public static double findMaxAverage(
+            int[] numbers, 
+            int k
+        ) {
         if (k <= 0 || k > numbers.length)
-            throw new IllegalArgumentException("invalid window size");
+            throw new Illega@@lArgumentException("invalid window size");
         long sum = 0;
         for (int i = 0; i < k; i++)
             sum += numbers[i];
@@ -43,3 +57,10 @@ public class MaximumAverageSubarray implements DsaExercise {
         new MaximumAverageSubarray().printGuide();
     }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: java/lang/IllegalArgumentException#

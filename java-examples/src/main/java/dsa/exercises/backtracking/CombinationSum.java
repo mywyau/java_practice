@@ -17,8 +17,14 @@ public class CombinationSum implements DsaExercise {
         return result;
     }
 
-    private static void combine(int[] candidates, int remaining, int start, java.util.List<Integer> current,
-            java.util.List<java.util.List<Integer>> result) {
+    private static void combine(
+            int[] candidates,
+            int remaining,
+            int start,
+            java.util.List<Integer> current,
+            java.util.List<java.util.List<Integer>> result
+        ) {
+            
         if (remaining == 0) {
             result.add(new java.util.ArrayList<>(current));
             return;

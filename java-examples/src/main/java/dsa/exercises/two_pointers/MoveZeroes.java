@@ -10,7 +10,25 @@ import dsa.exercises.DsaExercise;
  */
 public class MoveZeroes implements DsaExercise {
     // First compact nonzero values in order, then clear the unused suffix.
-    public static void moveZeroes(int[] numbers) { int write = 0; for (int number : numbers) if (number != 0) numbers[write++] = number; while (write < numbers.length) numbers[write++] = 0; }
+    public static void moveZeroes(int[] numbers) {
+        int write = 0;
+        for (int number : numbers)
+            if (number != 0)
+                numbers[write++] = number;
+        while (write < numbers.length)
+            numbers[write++] = 0;
+    }
+
+    public static void moveZeroes2(int[] numbers) {
+        // initiate write to 0
+        int write = 0;
+        for (int number : numbers)
+            if (number != 0)
+                numbers[write++] = number; // overwrite the next number to be non-zero
+        while (write < numbers.length)    
+            // whilst the write counter is less than the length of the array 
+            numbers[write++] = 0; // set zero on the rhs of the previous number?
+    }
 
     @Override
     public String problem() {
