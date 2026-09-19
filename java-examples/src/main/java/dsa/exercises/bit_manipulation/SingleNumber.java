@@ -9,8 +9,15 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class SingleNumber implements DsaExercise {
-    // Equal pairs cancel under XOR, leaving the unpaired value.
-    public static int singleNumber(int[] numbers) { int answer = 0; for (int number : numbers) answer ^= number; return answer; }
+    /** XOR removes pairs because {@code value ^ value == 0}. */
+    public static int singleNumber(int[] numbers) {
+        int answer = 0;
+        for (int number : numbers) {
+            // Compound assignment: answer ^= number means answer = answer ^ number.
+            answer ^= number;
+        }
+        return answer;
+    }
 
     @Override
     public String problem() {

@@ -9,9 +9,36 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ReverseLinkedList implements DsaExercise {
-    // Save next before rewiring the link, or the unprocessed suffix would be lost.
-    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } public ListNode(int value, ListNode next) { this.value = value; this.next = next; } }
-    public static ListNode reverseList(ListNode head) { ListNode previous = null; while (head != null) { ListNode next = head.next; head.next = previous; previous = head; head = next; } return previous; }
+    public static class ListNode {
+        public int value;
+        public ListNode next;
+
+        public ListNode(int value) {
+            this(value, null);
+        }
+
+        public ListNode(int value, ListNode next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    /** Reverses each arrow in place and returns the list's new head. */
+    public static ListNode reverseList(ListNode head) {
+        ListNode previous = null;
+        ListNode current = head;
+
+        while (current != null) {
+            // Save the unprocessed list before changing current.next.
+            ListNode next = current.next;
+            current.next = previous;
+
+            // Move both pointers one node forward.
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
 
     @Override
     public String problem() {

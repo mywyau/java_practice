@@ -7,7 +7,18 @@ import dsa.exercises.DsaExercise;
  *
  * Learning workflow: write a solution method, add edge cases, then compare its
  * complexity with targetComplexity().
+
+   This method moves all non-zero numbers to the beginning of the array,
+   preserving their order, and fills the remaining positions with zeroes.
+
+   The algorithm takes O(n) time and uses O(1) extra space.
+
+   The technique is often called a read/write pointer pattern:
+   - number represents the value currently being read.
+   - write represents where the next retained value should be written.
+   - Everything before write is already correct.
  */
+
 public class MoveZeroes implements DsaExercise {
     // First compact nonzero values in order, then clear the unused suffix.
     public static void moveZeroes(int[] numbers) {
@@ -20,14 +31,22 @@ public class MoveZeroes implements DsaExercise {
     }
 
     public static void moveZeroes2(int[] numbers) {
-        // initiate write to 0
+        // Index where the next non-zero number should be written.
         int write = 0;
-        for (int number : numbers)
-            if (number != 0)
-                numbers[write++] = number; // overwrite the next number to be non-zero
-        while (write < numbers.length)    
-            // whilst the write counter is less than the length of the array 
-            numbers[write++] = 0; // set zero on the rhs of the previous number?
+
+        // First pass: copy all non-zero numbers to the front.
+        for (int number : numbers) {
+            if (number != 0) {
+                numbers[write] = number;
+                write++;
+            }
+        }
+
+        // Second pass: fill the remaining positions with zeroes.
+        while (write < numbers.length) {
+            numbers[write] = 0;
+            write++;
+        }
     }
 
     @Override

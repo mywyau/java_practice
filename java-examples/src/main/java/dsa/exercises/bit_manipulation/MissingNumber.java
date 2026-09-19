@@ -9,8 +9,16 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MissingNumber implements DsaExercise {
-    // Matching indexes and values cancel, so only the missing range value survives.
-    public static int missingNumber(int[] numbers) { int answer = numbers.length; for (int i = 0; i < numbers.length; i++) answer ^= i ^ numbers[i]; return answer; }
+    /** Cancels every matching index/value pair, leaving the missing value. */
+    public static int missingNumber(int[] numbers) {
+        // The indexes cover 0..n-1, so include n separately to complete 0..n.
+        int answer = numbers.length;
+        for (int index = 0; index < numbers.length; index++) {
+            answer ^= index;
+            answer ^= numbers[index];
+        }
+        return answer;
+    }
 
     @Override
     public String problem() {

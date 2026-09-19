@@ -9,8 +9,22 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MinimumSizeSubarraySum implements DsaExercise {
-    // Positive values make the sum monotonic as either boundary moves.
-    public static int minSubArrayLen(int target, int[] numbers) { int left = 0, sum = 0, best = Integer.MAX_VALUE; for (int right = 0; right < numbers.length; right++) { sum += numbers[right]; while (sum >= target) { best = Math.min(best, right - left + 1); sum -= numbers[left++]; } } return best == Integer.MAX_VALUE ? 0 : best; }
+    /** Expands the right edge, then shrinks valid windows from the left. */
+    public static int minSubArrayLen(int target, int[] numbers) {
+        int left = 0;
+        int windowSum = 0;
+        int shortest = Integer.MAX_VALUE; // Sentinel meaning “no valid window yet.”
+
+        for (int right = 0; right < numbers.length; right++) {
+            windowSum += numbers[right];
+            while (windowSum >= target) {
+                shortest = Math.min(shortest, right - left + 1);
+                windowSum -= numbers[left];
+                left++; // Shrink and see whether the smaller window remains valid.
+            }
+        }
+        return shortest == Integer.MAX_VALUE ? 0 : shortest;
+    }
 
     @Override
     public String problem() {

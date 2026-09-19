@@ -9,9 +9,51 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ReorderList implements DsaExercise {
-    // Split the list, reverse its second half, and alternate nodes from both halves.
-    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } }
-    public static void reorderList(ListNode head) { if (head == null || head.next == null) return; ListNode slow = head, fast = head; while (fast.next != null && fast.next.next != null) { slow = slow.next; fast = fast.next.next; } ListNode second = slow.next; slow.next = null; ListNode previous = null; while (second != null) { ListNode next = second.next; second.next = previous; previous = second; second = next; } ListNode first = head; second = previous; while (second != null) { ListNode nextFirst = first.next, nextSecond = second.next; first.next = second; second.next = nextFirst; first = nextFirst; second = nextSecond; } }
+    public static class ListNode {
+        public int value;
+        public ListNode next;
+
+        public ListNode(int value) {
+            this.value = value;
+        }
+    }
+
+    /** Performs three patterns in sequence: find middle, reverse, then weave. */
+    public static void reorderList(ListNode head) {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        // Slow finishes at the end of the first half.
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode second = slow.next;
+        slow.next = null; // Disconnect the halves before changing their links.
+
+        ListNode previous = null;
+        while (second != null) {
+            ListNode next = second.next;
+            second.next = previous;
+            previous = second;
+            second = next;
+        }
+
+        ListNode first = head;
+        second = previous; // previous is now the head of the reversed second half.
+        while (second != null) {
+            ListNode nextFirst = first.next;
+            ListNode nextSecond = second.next;
+            first.next = second;
+            second.next = nextFirst;
+            first = nextFirst;
+            second = nextSecond;
+        }
+    }
 
     @Override
     public String problem() {

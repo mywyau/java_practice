@@ -9,8 +9,17 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ReverseBits implements DsaExercise {
-    // Copy one low input bit at a time; unsigned shift fills from the left with zeroes.
-    public static int reverseBits(int number) { int result = 0; for (int i = 0; i < Integer.SIZE; i++) { result = (result << 1) | (number & 1); number >>>= 1; } return result; }
+    /** Reverses all 32 positions, including leading and trailing zero bits. */
+    public static int reverseBits(int number) {
+        int result = 0;
+        for (int bit = 0; bit < Integer.SIZE; bit++) {
+            // Make room, then copy the input's lowest bit into the result.
+            result = (result << 1) | (number & 1);
+            // >>> is an unsigned shift: it always inserts a zero on the left.
+            number >>>= 1;
+        }
+        return result;
+    }
 
     @Override
     public String problem() {

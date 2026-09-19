@@ -9,8 +9,20 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class ClimbingStairs implements DsaExercise {
-    // Each step can be reached from exactly the previous one or previous two steps.
-    public static int climbStairs(int n) { if (n < 0) throw new IllegalArgumentException("n must be non-negative"); int previous = 1, current = 1; for (int step = 2; step <= n; step++) { int next = previous + current; previous = current; current = next; } return current; }
+    /** Uses the Fibonacci-like rule: ways(n) = ways(n - 1) + ways(n - 2). */
+    public static int climbStairs(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be non-negative");
+        }
+        int twoStepsBack = 1; // There is one way to reach step 0: take no steps.
+        int oneStepBack = 1;  // There is one way to reach step 1.
+        for (int step = 2; step <= n; step++) {
+            int waysToCurrent = twoStepsBack + oneStepBack;
+            twoStepsBack = oneStepBack; // Roll the two DP states forward.
+            oneStepBack = waysToCurrent;
+        }
+        return oneStepBack;
+    }
 
     @Override
     public String problem() {

@@ -9,9 +9,41 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MergeTwoSortedLists implements DsaExercise {
-    // A dummy head removes the special case for attaching the first result node.
-    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } public ListNode(int value, ListNode next) { this.value = value; this.next = next; } }
-    public static ListNode mergeTwoLists(ListNode first, ListNode second) { ListNode dummy = new ListNode(0), tail = dummy; while (first != null && second != null) { if (first.value <= second.value) { tail.next = first; first = first.next; } else { tail.next = second; second = second.next; } tail = tail.next; } tail.next = first != null ? first : second; return dummy.next; }
+    public static class ListNode {
+        public int value;
+        public ListNode next;
+
+        public ListNode(int value) {
+            this(value, null);
+        }
+
+        public ListNode(int value, ListNode next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    /** Reuses the existing nodes, attaching the smaller available node each time. */
+    public static ListNode mergeTwoLists(ListNode first, ListNode second) {
+        // The dummy node avoids a special case for assigning the result's first node.
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (first != null && second != null) {
+            if (first.value <= second.value) {
+                tail.next = first;
+                first = first.next;
+            } else {
+                tail.next = second;
+                second = second.next;
+            }
+            tail = tail.next;
+        }
+
+        // One list may have a sorted suffix remaining; it can be attached as a whole.
+        tail.next = first != null ? first : second;
+        return dummy.next;
+    }
 
     @Override
     public String problem() {

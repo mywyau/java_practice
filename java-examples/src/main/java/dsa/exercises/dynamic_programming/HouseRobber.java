@@ -9,8 +9,18 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class HouseRobber implements DsaExercise {
-    // Choose between skipping this house or adding it to the best total two houses back.
-    public static int rob(int[] houses) { int twoBack = 0, oneBack = 0; for (int money : houses) { int best = Math.max(oneBack, twoBack + money); twoBack = oneBack; oneBack = best; } return oneBack; }
+    /** Tracks the best total for each processed prefix of houses. */
+    public static int rob(int[] houses) {
+        int bestTwoHousesBack = 0;
+        int bestOneHouseBack = 0;
+        for (int money : houses) {
+            // Either skip this house, or rob it plus the best non-adjacent prefix.
+            int bestHere = Math.max(bestOneHouseBack, bestTwoHousesBack + money);
+            bestTwoHousesBack = bestOneHouseBack;
+            bestOneHouseBack = bestHere;
+        }
+        return bestOneHouseBack;
+    }
 
     @Override
     public String problem() {

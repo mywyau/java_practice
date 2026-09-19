@@ -9,9 +9,30 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class LinkedListCycle implements DsaExercise {
-    // Inside a cycle, the fast pointer gains one node per step until the pointers meet.
-    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } }
-    public static boolean hasCycle(ListNode head) { ListNode slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; if (slow == fast) return true; } return false; }
+    public static class ListNode {
+        public int value;
+        public ListNode next;
+
+        public ListNode(int value) {
+            this.value = value;
+        }
+    }
+
+    /** Uses Floyd's two-speed pointer technique without storing visited nodes. */
+    public static boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        // Short-circuiting makes fast.next safe: it is read only when fast is non-null.
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) { // == checks whether both variables reference the same node.
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public String problem() {

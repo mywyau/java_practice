@@ -20,13 +20,14 @@ public class Subsets implements DsaExercise {
     private static void build(int[] numbers, int index, java.util.List<Integer> current,
             java.util.List<java.util.List<Integer>> result) {
         if (index == numbers.length) {
+            // Copy the path because current will be mutated for the next branch.
             result.add(new java.util.ArrayList<>(current));
             return;
         }
-        build(numbers, index + 1, current, result);
+        build(numbers, index + 1, current, result); // Exclude numbers[index].
         current.add(numbers[index]);
-        build(numbers, index + 1, current, result);
-        current.removeLast();
+        build(numbers, index + 1, current, result); // Include numbers[index].
+        current.removeLast(); // Undo the choice before returning to the parent call.
     }
 
     @Override

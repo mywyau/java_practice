@@ -19,17 +19,20 @@ public class Permutations implements DsaExercise {
     private static void arrange(int[] numbers, boolean[] used, java.util.List<Integer> current,
             java.util.List<java.util.List<Integer>> result) {
         if (current.size() == numbers.length) {
+            // Store a snapshot; current itself is reused to build other permutations.
             result.add(new java.util.ArrayList<>(current));
             return;
         }
-        for (int i = 0; i < numbers.length; i++)
-            if (!used[i]) {
-                used[i] = true;
-                current.add(numbers[i]);
+
+        for (int index = 0; index < numbers.length; index++) {
+            if (!used[index]) {
+                used[index] = true; // Choose.
+                current.add(numbers[index]);
                 arrange(numbers, used, current, result);
-                current.removeLast();
-                used[i] = false;
+                current.removeLast(); // Undo both changes before trying a sibling.
+                used[index] = false;
             }
+        }
     }
 
     @Override

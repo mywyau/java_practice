@@ -9,8 +9,25 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class SquaresOfSortedArray implements DsaExercise {
-    // The largest remaining square must come from one of the two input ends.
-    public static int[] sortedSquares(int[] numbers) { int[] result = new int[numbers.length]; int left = 0, right = numbers.length - 1; for (int output = result.length - 1; output >= 0; output--) { int a = numbers[left] * numbers[left], b = numbers[right] * numbers[right]; if (a > b) { result[output] = a; left++; } else { result[output] = b; right--; } } return result; }
+    /** Fills the result from largest to smallest by comparing both input ends. */
+    public static int[] sortedSquares(int[] numbers) {
+        int[] result = new int[numbers.length];
+        int left = 0;
+        int right = numbers.length - 1;
+
+        for (int output = result.length - 1; output >= 0; output--) {
+            int leftSquare = numbers[left] * numbers[left];
+            int rightSquare = numbers[right] * numbers[right];
+            if (leftSquare > rightSquare) {
+                result[output] = leftSquare;
+                left++;
+            } else {
+                result[output] = rightSquare;
+                right--;
+            }
+        }
+        return result;
+    }
 
     @Override
     public String problem() {

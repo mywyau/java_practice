@@ -9,9 +9,26 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class MaximumDepthOfBinaryTree implements DsaExercise {
-    // Define depth recursively as one plus the deeper child subtree.
-    public static class TreeNode { public int value; public TreeNode left, right; public TreeNode(int value) { this.value = value; } }
-    public static int maxDepth(TreeNode root) { return root == null ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right)); }
+    public static class TreeNode {
+        public int value;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int value) {
+            this.value = value;
+        }
+    }
+
+    /** Returns the number of nodes on the longest path starting at {@code root}. */
+    public static int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0; // An empty subtree contributes no nodes to the path.
+        }
+
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        return 1 + Math.max(leftDepth, rightDepth); // Add the current node.
+    }
 
     @Override
     public String problem() {

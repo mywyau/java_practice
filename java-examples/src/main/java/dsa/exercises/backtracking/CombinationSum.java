@@ -26,15 +26,21 @@ public class CombinationSum implements DsaExercise {
         ) {
             
         if (remaining == 0) {
+            // Reaching zero means the current choices total the original target.
             result.add(new java.util.ArrayList<>(current));
             return;
         }
-        for (int i = start; i < candidates.length; i++)
-            if (candidates[i] > 0 && candidates[i] <= remaining) {
-                current.add(candidates[i]);
-                combine(candidates, remaining - candidates[i], i, current, result);
+
+        // start prevents reordered duplicates such as [2, 3] and [3, 2].
+        for (int index = start; index < candidates.length; index++) {
+            int candidate = candidates[index];
+            if (candidate > 0 && candidate <= remaining) {
+                current.add(candidate);
+                // Pass index again because the same candidate may be reused.
+                combine(candidates, remaining - candidate, index, current, result);
                 current.removeLast();
             }
+        }
     }
 
     @Override

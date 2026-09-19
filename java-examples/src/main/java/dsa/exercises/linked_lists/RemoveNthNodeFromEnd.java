@@ -9,9 +9,45 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class RemoveNthNodeFromEnd implements DsaExercise {
-    // Keeping an n-node gap makes slow stop just before the node to remove.
-    public static class ListNode { public int value; public ListNode next; public ListNode(int value) { this.value = value; } public ListNode(int value, ListNode next) { this.value = value; this.next = next; } }
-    public static ListNode removeNthFromEnd(ListNode head, int n) { if (n <= 0) throw new IllegalArgumentException("n must be positive"); ListNode dummy = new ListNode(0, head), fast = dummy, slow = dummy; for (int i = 0; i < n; i++) { fast = fast.next; if (fast == null) throw new IllegalArgumentException("n exceeds list length"); } while (fast.next != null) { fast = fast.next; slow = slow.next; } slow.next = slow.next.next; return dummy.next; }
+    public static class ListNode {
+        public int value;
+        public ListNode next;
+
+        public ListNode(int value) {
+            this(value, null);
+        }
+
+        public ListNode(int value, ListNode next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    /** Keeps two pointers n nodes apart so no length pre-pass is needed. */
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive");
+        }
+
+        // A dummy predecessor also handles removing the real head.
+        ListNode dummy = new ListNode(0, head);
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+
+        for (int gap = 0; gap < n; gap++) {
+            fast = fast.next;
+            if (fast == null) {
+                throw new IllegalArgumentException("n exceeds list length");
+            }
+        }
+
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next; // Bypass the node, removing it from the chain.
+        return dummy.next;
+    }
 
     @Override
     public String problem() {

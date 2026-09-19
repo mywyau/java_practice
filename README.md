@@ -47,10 +47,20 @@ commands.
 ### DSA learning track
 
 [`java-examples/DSA_EXERCISES.md`](java-examples/DSA_EXERCISES.md) catalogs 75
-practice questions across 15 concepts. Every question has a separate runnable
-Java class containing a prompt, a hint, and a target complexity. Start with the
-arrays section, implement a solution method in the class, and add tests as you
-go.
+practice questions across 15 concepts. Every question has a separate Java class
+containing a prompt, hint, target complexity, and reference implementation. Start
+with the arrays section, attempt each problem before reading its solution, and
+add tests as you go.
+
+Two companion guides make the track easier to study:
+
+- [`java-examples/DSA_TECHNIQUES.md`](java-examples/DSA_TECHNIQUES.md) explains
+  problem-solving workflow, Big O, pattern recognition, worked traces, recursion,
+  invariants, and common mistakes.
+- [`java-examples/JAVA_DSA_SYNTAX.md`](java-examples/JAVA_DSA_SYNTAX.md) expands
+  Java shorthand used by the solutions, including enhanced loops, `write++`,
+  ternaries, collections, map helpers, lambdas, method references, streams, and
+  node references.
 
 ### SOLID design principles
 

@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 /**
  * A lambda is a function that can be stored in a variable and passed around.
  */
+
 public class LambdaAndInterfaces {
 
     @FunctionalInterface

@@ -9,9 +9,41 @@ import dsa.exercises.DsaExercise;
  * complexity with targetComplexity().
  */
 public class WordSearch implements DsaExercise {
-    // Temporarily mark a cell during one path, then restore it for other paths.
-    public static boolean exist(char[][] board, String word) { if (word.isEmpty()) return true; for (int row = 0; row < board.length; row++) for (int column = 0; column < board[row].length; column++) if (find(board, word, row, column, 0)) return true; return false; }
-    private static boolean find(char[][] board, String word, int row, int column, int index) { if (index == word.length()) return true; if (row < 0 || row >= board.length || column < 0 || column >= board[row].length || board[row][column] != word.charAt(index)) return false; char saved = board[row][column]; board[row][column] = '\0'; boolean found = find(board, word, row + 1, column, index + 1) || find(board, word, row - 1, column, index + 1) || find(board, word, row, column + 1, index + 1) || find(board, word, row, column - 1, index + 1); board[row][column] = saved; return found; }
+    /** Tries every cell as the beginning of a four-directional word path. */
+    public static boolean exist(char[][] board, String word) {
+        if (word.isEmpty()) {
+            return true;
+        }
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length; column++) {
+                if (find(board, word, row, column, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean find(char[][] board, String word,
+            int row, int column, int index) {
+        if (index == word.length()) {
+            return true; // Every character has been matched.
+        }
+        if (row < 0 || row >= board.length
+                || column < 0 || column >= board[row].length
+                || board[row][column] != word.charAt(index)) {
+            return false;
+        }
+
+        char saved = board[row][column];
+        board[row][column] = '\0'; // Mark this cell as unavailable on the current path.
+        boolean found = find(board, word, row + 1, column, index + 1)
+                || find(board, word, row - 1, column, index + 1)
+                || find(board, word, row, column + 1, index + 1)
+                || find(board, word, row, column - 1, index + 1);
+        board[row][column] = saved; // Undo so another path can reuse the cell.
+        return found;
+    }
 
     @Override
     public String problem() {
