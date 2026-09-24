@@ -29,4 +29,5 @@ replay_pid*
 # Ignore build output in every subproject
 build/
 
-.metals
+# metals
+.metals/
