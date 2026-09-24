@@ -68,6 +68,26 @@ public class SwitchStatements {
         DOG, CAT, RABBIT
     }
 
+    public enum Colours {
+        Black,
+        Red,
+        Yellow,
+        Grey
+    }
+
+    public String coloursSwitch(Colours colour) {
+
+        String result = switch (colour) {
+            case Black -> "Black";
+            case Red -> "Red";
+            case Yellow -> "Yellow";
+            case Grey -> "Grey";
+            default -> "Unknown colour";
+        };
+
+        return result;
+    }
+
     public void switchOnEnum() {
         Animal animal = Animal.CAT;
 
@@ -131,6 +151,7 @@ public class SwitchStatements {
         ss.traditionalSwitch();
         ss.multipleCaseLabels();
         ss.switchWithYield();
+        ss.coloursSwitch(Colours.Red);
         ss.switchOnEnum();
         ss.switchOnString();
         ss.nestedSwitch();
